@@ -5,7 +5,7 @@ const cors = require("cors");
 const rs = require("request");
 const port = 8080;
 
-app.use(cros());
+app.use(cors());
 
 const baseURL = "https://gogoanime.ar/";
 
