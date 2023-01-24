@@ -3,9 +3,9 @@ const { v4 } = require("uuid");
 const cheerio = require("cheerio");
 const cors = require("cors");
 const rs = require("request");
-const port = 3000;
+const port = 8080;
 
-
+app.use(cros());
 
 const baseURL = "https://gogoanime.ar/";
 
