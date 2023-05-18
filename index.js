@@ -6,6 +6,7 @@ const rs = require("request");
 const port = 8080;
 
 app.use(cors());
+app.set("json spaces",2)
 
 const baseURL = "https://gogoanime.ar/";
 
@@ -34,11 +35,11 @@ app.get("/api/popular/:page", (req, res) => {
       try {
         var $ = cheerio.load(html);
         $(".img").each(function (index, element) {
-          let title = $(this).children("a").attr().title;
+          let category_name = $(this).children("a").attr().title;
           let id = $(this).children("a").attr().href.slice(10);
-          let image = $(this).children("a").children("img").attr().src;
+          let category_image = $(this).children("a").children("img").attr().src;
 
-          results[index] = { title, id, image };
+          results[index] = { category_name, id, category_image };
         });
         res.status(200).json({ results });
       } catch (e) {
@@ -122,11 +123,11 @@ app.get("/api/search/:word/:page", (req, res) => {
       try {
         var $ = cheerio.load(html);
         $(".img").each(function (index, element) {
-          let title = $(this).children("a").attr().title;
           let id = $(this).children("a").attr().href.slice(10);
-          let image = $(this).children("a").children("img").attr().src;
+          let category_name = $(this).children("a").attr().title;
+          let category_image = $(this).children("a").children("img").attr().src;
 
-          results[index] = { title, id, image };
+          results[index] = { id, category_name, category_image };
         });
         res.status(200).json({ results });
       } catch (e) {
